@@ -20,8 +20,11 @@ io.on('connection', function(socket) {
     });
 
     connection.on('invalidate', function(data){
-        log('invalidate ' + data['checksum'] + ' in project #' + data['project']);
-        io.to(data['project']).emit("update", data);
+        log('invalidate ' + data['routes'].length + ' route(s) and ' + data['tokens'].length + ' token(s) in project #' + data['project']);
+        for(var n=0; n<data['routes'].length; n++) {
+            io.to(data['project']).emit("routeUpdate", data['routes'][n]);
+            log('invalidate ' + data['routes'][n].name + ' in project #' + data['project']);
+        }
     });
 
     connection.on('share', function(data) {
