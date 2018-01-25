@@ -9,7 +9,7 @@ function log(text) {
     console.log("[" + dateReadOut + "] " + text);
 };
 
-log('EMDESKv2 Validation Socket is listen to localhost:' + port);
+log('Validation Socket is listen to localhost:' + port);
 
 io.on('connection', function (socket) {
     var self = this;
